@@ -36,12 +36,17 @@ build_image () {
         echo "error: version mismatch" 1>&2
         exit 1
     fi
-    docker tag -f "$tag" "monetas/$name:$version" 1>&2
-    docker tag -f "$tag" "monetas/$name:latest" 1>&2
+    docker tag -f "$tag" "${TAG_PREFIX}$name:$version" 1>&2
+    docker tag -f "$tag" "${TAG_PREFIX}$name:latest" 1>&2
     docker rmi "$tag" 1>&2
-    echo "monetas/$name:$version"
-    echo "monetas/$name:latest"
+    echo "${TAG_PREFIX}$name:$version"
+    echo "${TAG_PREFIX}$name:latest"
 }
+
+TAG_PREFIX="monetas/"
+if grep -q '^NAME="CentOS Linux"$' /etc/os-release; then
+    TAG_PREFIX="docker.io/$TAG_PREFIX"
+fi
 
 folders="golang-base java-base android-base"
 if [ "$1" = "--check-diff" ]; then
