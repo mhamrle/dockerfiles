@@ -2,10 +2,12 @@
 
 ### Setup various packages.
 apt-get update
+# gcc and libc6-dev are needed by the errcheck tool
 apt-get install -y --no-install-recommends \
     ca-certificates \
+    gcc \
+    libc6-dev \
     git
-
 
 ### Setup postgres database
 apt-get install -y --no-install-recommends postgresql

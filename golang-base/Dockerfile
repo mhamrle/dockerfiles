@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 MAINTAINER Filip Gospodinov "filip@monetas.net"
 
 LABEL name=golang-base
-LABEL version=12
+LABEL version=13
 
 ADD postgres ./postgres
 ADD install.sh ./
@@ -23,6 +23,7 @@ RUN while read dep sha1; do \
         go get "$dep" && cd "$GOPATH/src/$dep" && git checkout "$sha1"; \
     done < dependencies
 RUN cd $GOPATH/src/github.com/golang/lint/golint && go install
+RUN cd $GOPATH/src/github.com/kisielk/errcheck && go install
 
 # InfluxDB and Grafana configuration
 # from https://github.com/StackPointCloud/docker-influxdb
