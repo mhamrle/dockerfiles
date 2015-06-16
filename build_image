@@ -2,6 +2,7 @@
 
 check_diff () {
     dockerfile=$1
+    git fetch origin master
     diff=$(git diff $(git merge-base HEAD origin/master) "$dockerfile")
     new_version=$(echo "$diff" | sed -n 's/^+LABEL version=\([0-9]\+\)$/\1/p')
     if ! [ "$new_version" ]; then
