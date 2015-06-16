@@ -3,7 +3,6 @@ FROM ubuntu:14.04
 MAINTAINER Filip Gospodinov "filip@monetas.net"
 
 LABEL name=golang-base
-LABEL version=14
 
 ADD postgres/extra.conf  postgres/pg_hba.conf postgres/postgres_superuser.sql /postgres/
 ADD postgres/supervisord.conf /etc/supervisor/conf.d/postgres.conf
@@ -35,3 +34,5 @@ ADD metrics/supervisord.conf /etc/supervisor/conf.d/metrics.conf
 ADD metrics/config.toml /opt/influxdb/current/config.toml
 
 CMD ["bash"]
+
+LABEL version=15
