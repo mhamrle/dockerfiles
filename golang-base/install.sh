@@ -41,5 +41,13 @@ dpkg -i influxdb_0.8.8_amd64.deb && \
 echo "influxdb soft nofile unlimited" >> /etc/security/limits.conf && \
 echo "influxdb hard nofile unlimited" >> /etc/security/limits.conf
 
+### Setup RabbitMQ ###
+apt-get -y --no-install-recommends install \
+    rabbitmq-server
+rabbitmq-plugins enable rabbitmq_management
+service rabbitmq-server start
+curl http://127.0.0.1:15672/cli/rabbitmqadmin > /usr/local/sbin/rabbitmqadmin
+chmod +x /usr/local/sbin/rabbitmqadmin
+
 ### Cleanup
 apt-get autoremove

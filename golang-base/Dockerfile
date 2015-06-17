@@ -6,6 +6,8 @@ LABEL name=golang-base
 
 ADD postgres/extra.conf  postgres/pg_hba.conf postgres/postgres_superuser.sql /postgres/
 ADD postgres/supervisord.conf /etc/supervisor/conf.d/postgres.conf
+ADD rabbitmq/dev-supervisord.conf /etc/supervisor/conf.d/rabbitmq.conf
+ADD rabbitmq/tests-supervisord.conf /etc/supervisor/conf.d/rabbitmq-tests.conf
 
 ADD install.sh /tmp/
 RUN sh /tmp/install.sh
@@ -35,4 +37,4 @@ ADD metrics/config.toml /opt/influxdb/current/config.toml
 
 CMD ["bash"]
 
-LABEL version=15
+LABEL version=16

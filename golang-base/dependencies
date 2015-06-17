@@ -15,3 +15,4 @@ github.com/gorilla/context           215affda49addc4c8ef7e2534915df2c8c35c6cd
 github.com/kisielk/errcheck          a48456c583c0111c8310fc59335f6496b8eb85f1
 github.com/axw/gocov/gocov           3b045e0eb61013ff134e6752184febc47d119f3a
 github.com/influxdb/influxdb         afde71eb1740fd763ab9450e1f700ba0e53c36d0
+github.com/streadway/amqp            6a378341a305bfbc252e8a6638f16cf443221997
