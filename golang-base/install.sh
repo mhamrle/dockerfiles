@@ -46,8 +46,14 @@ apt-get -y --no-install-recommends install \
     rabbitmq-server
 rabbitmq-plugins enable rabbitmq_management
 service rabbitmq-server start
-curl http://127.0.0.1:15672/cli/rabbitmqadmin > /usr/local/sbin/rabbitmqadmin
+curl -s http://127.0.0.1:15672/cli/rabbitmqadmin > /usr/local/sbin/rabbitmqadmin
 chmod +x /usr/local/sbin/rabbitmqadmin
+
+### Setup NSQ ###
+nsq=nsq-0.3.5.linux-amd64.go1.4.2
+curl -s https://s3.amazonaws.com/bitly-downloads/nsq/$nsq.tar.gz | tar -xz
+cp $nsq/bin/* /usr/local/bin
+rm -fr $nsq
 
 ### Cleanup
 apt-get autoremove

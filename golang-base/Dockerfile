@@ -6,8 +6,8 @@ LABEL name=golang-base
 
 ADD postgres/extra.conf  postgres/pg_hba.conf postgres/postgres_superuser.sql /postgres/
 ADD postgres/supervisord.conf /etc/supervisor/conf.d/postgres.conf
-ADD rabbitmq/dev-supervisord.conf /etc/supervisor/conf.d/rabbitmq.conf
-ADD rabbitmq/tests-supervisord.conf /etc/supervisor/conf.d/rabbitmq-tests.conf
+ADD rabbitmq/supervisord.conf /etc/supervisor/conf.d/rabbitmq.conf
+ADD nsq/supervisord.conf /etc/supervisor/conf.d/nsq.conf
 
 ADD install.sh /tmp/
 RUN /tmp/install.sh
@@ -37,4 +37,4 @@ ADD metrics/config.toml /opt/influxdb/current/config.toml
 
 CMD ["bash"]
 
-LABEL version=17
+LABEL version=18

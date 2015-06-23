@@ -16,3 +16,4 @@ github.com/kisielk/errcheck          a48456c583c0111c8310fc59335f6496b8eb85f1
 github.com/axw/gocov/gocov           3b045e0eb61013ff134e6752184febc47d119f3a
 github.com/influxdb/influxdb         afde71eb1740fd763ab9450e1f700ba0e53c36d0
 github.com/streadway/amqp            6a378341a305bfbc252e8a6638f16cf443221997
+github.com/bitly/go-nsq              8c8eba2ac6823ce1ba17b3a353eaf5811a21a7f5
