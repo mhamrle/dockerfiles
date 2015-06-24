@@ -10,7 +10,7 @@ ADD rabbitmq/dev-supervisord.conf /etc/supervisor/conf.d/rabbitmq.conf
 ADD rabbitmq/tests-supervisord.conf /etc/supervisor/conf.d/rabbitmq-tests.conf
 
 ADD install.sh /tmp/
-RUN sh /tmp/install.sh
+RUN /tmp/install.sh
 
 ADD run_services.sh /opt/
 
@@ -37,4 +37,4 @@ ADD metrics/config.toml /opt/influxdb/current/config.toml
 
 CMD ["bash"]
 
-LABEL version=16
+LABEL version=17

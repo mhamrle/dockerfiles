@@ -22,7 +22,7 @@ done
 # Wait for InfluxDB. It is *utterly* inconsequential which URL we curl.
 for i in $(seq 50); do
    echo "Waiting for InfluxDB to start (${i}/50)"
-   if curl 'http://0.0.0.0:8086/' &> /dev/null; then
+   if curl --fail --silent 'http://0.0.0.0:8086/' || [ $? -eq 22 ]; then
        echo "InfluxDB started"
        break
    fi
