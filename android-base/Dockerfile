@@ -3,7 +3,7 @@ FROM monetas/java-base:6
 MAINTAINER Monetas "technical@monetas.net"
 
 LABEL name=android-base
-LABEL version=1
+LABEL version=2
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
@@ -23,6 +23,10 @@ ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 # Install android sdk parts
 # Android needs to confirm licences. It is not possible to use `yes` command because sleep is required.
-RUN (while true; do echo "y"; sleep 2; done) | android update sdk -a --filter android-22,build-tools-22.0.1,extra-android-m2repository --no-ui
+RUN (while true; do echo "y"; sleep 2; done) | android update sdk -a --no-ui --filter \
+android-22,\
+build-tools-22.0.1,\
+extra-android-m2repository,\
+extra-google-m2repository
 
 CMD ["bash"]
